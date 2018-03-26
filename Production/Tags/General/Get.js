@@ -1,6 +1,6 @@
 const { General } = require.main.require('./Tag/Classes');
 
-class CleanTag extends General {
+class GetTag extends General {
   constructor(client) {
     super(client, {
       name: 'get',
@@ -22,4 +22,4 @@ class CleanTag extends General {
   }
 }
 
-module.exports = CleanTag;
+module.exports = GetTag;

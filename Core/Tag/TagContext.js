@@ -3,6 +3,7 @@ const Context = require('../Structures/Context');
 const SubTag = require('./SubTag');
 const TagArray = require('./TagArray');
 const TagError = require('./TagError');
+const SubTagArg = require('./SubTagArg');
 
 class TagContext extends Context {
   /* {
@@ -73,6 +74,7 @@ class TagContext extends Context {
   }
 
   async processSub(elemMap) {
+    //console.log(elemMap);
     if (!Array.isArray(elemMap)) elemMap = [elemMap];
     const oldFallback = this.fallback;
     let content = [];
@@ -118,9 +120,13 @@ class TagContext extends Context {
             throw new TagError(this.client.Constants.TagError.TAG_NOT_FOUND, { tag: name });
           }
         } else if (element instanceof TagArray) {
-          for (let arrElm of element) {
-            arrElm = await this.processSub(arrElm);
+          for (let i = 0; i < element.length; i++) {
+            element[i] = await this.processSub(element[i]);
           }
+          content.push(element);
+        } else if (element instanceof SubTagArg) {
+          element.name = await this.processSub(element.name);
+          element.value = await this.processSub(element.value);
           content.push(element);
         } else if (Array.isArray(element)) {
           content.push(await this.processSub(element));
