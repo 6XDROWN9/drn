@@ -36,9 +36,7 @@ class JSONTag extends General {
     } else if (args.filter(e => !(e instanceof SubTagArg)).length === 0) {
       obj = {};
       for (const arg of args) {
-        let arr = new TagArray(arg.value);
-        arr = arr.toArray();
-        obj[arg.name.join('')] = arr[0];
+        obj[arg.name.join('')] = arg.parsedValue;
       }
     } else obj = args.length > 0 ? args.join('') : args[0];
     // for (const key in args) {

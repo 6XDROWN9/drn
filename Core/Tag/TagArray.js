@@ -58,6 +58,8 @@ class TagArray extends Array {
     let num = BigNumber(token);
     if (num.number !== 'Invalid Number' && num.lte(Number.MAX_SAFE_INTEGER))
       token = parseInt(token);
+    else if (token === "true") token = true;
+    else if (token === "false") token = false;
 
     if (this.length === 0) this.push([]);
     if (!Array.isArray(this.last)) {
@@ -94,9 +96,8 @@ class TagArray extends Array {
         if (el[0] instanceof TagArray) {
           arr.push(el[0].toArray());
         } else if (el[0] instanceof SubTagArg) {
-          let val = this.toArray(el[0].value);
 
-          arr.push({ [el[0].name.join('')]: val });
+          arr.push({ [el[0].name.join('')]: el[0].parsedValue });
         } else {
           arr.push(el[0]);
         }
@@ -105,7 +106,7 @@ class TagArray extends Array {
           if (el.filter(a => !(a instanceof SubTagArg)).length === 0) {
             let obj = {};
             for (let i = 0; i < el.length; i++) {
-              obj[el[i].name.join('')] = this.toArray(el[i].value)[0];
+              obj[el[i].name.join('')] = el[i].parsedValue;
             }
             arr.push(obj);
           } else

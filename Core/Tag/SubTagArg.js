@@ -1,4 +1,4 @@
-const TagArray = require('./TagArray');
+const BigNumber = require('big-number');
 
 class SubTagArg {
   constructor(columnIndex, rowIndex) {
@@ -21,6 +21,19 @@ class SubTagArg {
 
   toString() {
     return this.serialize();
+  }
+
+  get parsedValue() {
+    const TagArray = require('./TagArray');
+    let arr = new TagArray(this.value);
+    arr = arr.toArray();
+    let val = arr[0];
+    let num = BigNumber(val);
+    if (num.number !== 'Invalid Number' && num.lte(Number.MAX_SAFE_INTEGER))
+      val = parseInt(val);
+    else if (val === "true") val = true;
+    else if (val === "false") val = false;
+    return val;
   }
 }
 
