@@ -1,4 +1,4 @@
-const conf = require('../config.json');
+const conf = require('./config.json');
 
 module.exports = {
   dev: conf.beta,

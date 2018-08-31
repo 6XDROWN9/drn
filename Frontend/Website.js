@@ -11,7 +11,7 @@ const config = require('../config');
 global._config = config;
 
 const { Nuxt, Builder } = require('nuxt');
-const nuxtConfig = require('./nuxt.config.js');
+const nuxtConfig = require('../nuxt.config.js');
 const nuxt = new Nuxt(nuxtConfig);
 if (nuxt.options.dev) {
   new Builder(nuxt).build();
