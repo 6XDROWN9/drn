@@ -56,7 +56,7 @@ class TagArray extends Array {
 
   addArgument(token) {
     let num = BigNumber(token);
-    if (num.number !== 'Invalid Number' && num.lte(Number.MAX_SAFE_INTEGER))
+    if (typeof token === 'string' && num.number !== 'Invalid Number' && num.lte(Number.MAX_SAFE_INTEGER))
       token = parseInt(token);
     else if (token === "true") token = true;
     else if (token === "false") token = false;
@@ -94,6 +94,7 @@ class TagArray extends Array {
       if (!Array.isArray(el)) el = [el];
       if (el.length === 1) {
         if (el[0] instanceof TagArray) {
+          console.log(el[0]);
           arr.push(el[0].toArray());
         } else if (el[0] instanceof SubTagArg) {
 
