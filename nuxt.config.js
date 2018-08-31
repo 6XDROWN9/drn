@@ -4,7 +4,7 @@ module.exports = {
   dev: conf.beta,
   srcDir: 'Frontend/',
   build: {
-    vendor: ['vue-i18n', 'axios'],
+    vendor: ['vue-i18n', 'axios', 'vue-markdown'],
     extractCSS: true
   },
   css: [
@@ -65,7 +65,7 @@ module.exports = {
       });
     }
   },
-  plugins: ['~/plugins/i18n.js', 'vue-markdown'],
+  plugins: ['~/plugins/i18n.js', '~/plugins/vue-markdown'],
   head: {
     meta: [{
       name: 'viewport',
