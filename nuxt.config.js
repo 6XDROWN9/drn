@@ -16,46 +16,46 @@ module.exports = {
     extendRoutes(routes, resolve) {
       routes.push({
         path: '/',
-        component: resolve(__dirname, 'renders/wrapper.vue'),
+        component: resolve(__dirname, 'Frontend/renders/wrapper.vue'),
         children: [
           {
             name: 'blargbot', path: '/',
-            component: resolve(__dirname, 'renders/index.vue')
+            component: resolve(__dirname, 'Frontend/renders/index.vue')
           }, {
             name: 'BBTag', path: '/bbtag/:name?',
-            component: resolve(__dirname, 'renders/bbtag/index.vue')
+            component: resolve(__dirname, 'Frontend/renders/bbtag/index.vue')
           }, {
             name: 'Commands', path: '/commands/:name?',
-            component: resolve(__dirname, 'renders/commands.vue')
+            component: resolve(__dirname, 'Frontend/renders/commands.vue')
           }, {
             name: 'Escaper', path: '/escaper',
-            component: resolve(__dirname, 'renders/escape.vue')
+            component: resolve(__dirname, 'Frontend/renders/escape.vue')
           }, {
             name: 'Embeds', path: '/embeds',
-            component: resolve(__dirname, 'renders/embeds.vue')
+            component: resolve(__dirname, 'Frontend/renders/embeds.vue')
           }, {
             name: 'V1Escaper', path: '/v1escaper',
-            component: resolve(__dirname, 'renders/v1escaper.vue')
+            component: resolve(__dirname, 'Frontend/renders/v1escaper.vue')
           }, {
             name: 'SubTags', path: '/subtags/:name?',
-            component: resolve(__dirname, 'renders/subtags.vue')
+            component: resolve(__dirname, 'Frontend/renders/subtags.vue')
           }, {
             name: 'Dashboard', path: '/dashboard/',
-            component: resolve(__dirname, 'renders/dashboard/index.vue'),
+            component: resolve(__dirname, 'Frontend/renders/dashboard/index.vue'),
             children: [
               {
                 name: 'User Settings',
                 path: 'user',
-                component: resolve(__dirname, 'renders/dashboard/user/index.vue')
+                component: resolve(__dirname, 'Frontend/renders/dashboard/user/index.vue')
               },
               {
                 name: 'Guild Settings',
                 path: 'guild/:id?',
-                component: resolve(__dirname, 'renders/dashboard/guild/index.vue'),
+                component: resolve(__dirname, 'Frontend/renders/dashboard/guild/index.vue'),
                 children: [
                   {
                     name: 'General Guild Settings', path: 'general',
-                    component: resolve(__dirname, 'renders/dashboard/guild/general.vue')
+                    component: resolve(__dirname, 'Frontend/renders/dashboard/guild/general.vue')
                   }
                 ]
               }
